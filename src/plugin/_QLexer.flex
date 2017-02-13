@@ -93,7 +93,6 @@ DERIVED_VERB=({ID}|(({VERB}|{N_COLON})":"?)){ADVERB}+
   "if"/"["                     { return IF; }
   "do"/"["                     { return DO; }
   "while"/"["                  { return WHILE; }
-  "$"/"["                      { return IFELSE; }
   {ADVERB}+/"["                { return ADVERB; }
   {DERIVED_VERB}               { return DERIVED_VERB; }
   {COMPOSED_MONAD}/[^\[]       { return COMPOSED_MONAD; }

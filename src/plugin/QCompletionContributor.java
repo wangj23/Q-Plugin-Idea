@@ -49,7 +49,11 @@ public class QCompletionContributor extends CompletionContributor {
 
   private static void addToAutoSuggestion(QUserAssignmentId signature, CompletionResultSet resultSet, String userInput) {
     if(signature != null && signature.getText() != null && signature.getText().startsWith(userInput)) {
-      resultSet.addElement(LookupElementBuilder.create(signature.getText()));
+      String signatureName = signature.getText();
+      if(signatureName.startsWith(".")) {
+        signatureName = signatureName.substring(1);
+      }
+      resultSet.addElement(LookupElementBuilder.create(signatureName));
     }
   }
 
@@ -58,7 +62,9 @@ public class QCompletionContributor extends CompletionContributor {
     PsiElement topLevelAssignment = PsiTreeUtil.getTopmostParentOfType(psiElement, QLocalAssignment.class);
     List<QUserAssignmentId> result = new ArrayList<QUserAssignmentId>();
     Queue<PsiElement> children = Queues.newArrayDeque();
-    Collections.addAll(children, topLevelAssignment.getChildren());
+    if(topLevelAssignment != null) {
+      Collections.addAll(children, topLevelAssignment.getChildren());
+    }
     while(!children.isEmpty()) {
       PsiElement child = children.poll();
       Collections.addAll(children, child.getChildren());

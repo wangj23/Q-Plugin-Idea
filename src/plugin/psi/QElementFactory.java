@@ -8,9 +8,14 @@ import plugin.QFileType;
 
 public class QElementFactory {
 
-  public static QUserId createProperty(Project project, String name) {
+  public static QUserId createQUserIds(Project project, String name) {
     final QFile file = createFile(project, name);
     return (QUserId)file.getFirstChild();
+  }
+
+  public static QUserAssignmentId createQUserAssignment(Project project, String name) {
+    final QFile file = createFile(project, name);
+    return (QUserAssignmentId)file.getFirstChild();
   }
 
   public static PsiElement createCRLF(Project project) {

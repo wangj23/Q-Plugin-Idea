@@ -9,7 +9,6 @@ import com.intellij.psi.PsiElementVisitor;
 import com.intellij.psi.util.PsiTreeUtil;
 import static plugin.psi.QTypes.*;
 import plugin.psi.*;
-import com.intellij.navigation.ItemPresentation;
 
 public class QUserIdImpl extends QNamedElementImpl implements QUserId {
 
@@ -30,22 +29,6 @@ public class QUserIdImpl extends QNamedElementImpl implements QUserId {
   @NotNull
   public PsiElement getUserIdentifier() {
     return findNotNullChildByType(USER_IDENTIFIER);
-  }
-
-  public String getName() {
-    return QPsiImplUtil.getName(this);
-  }
-
-  public PsiElement setName(String newName) {
-    return QPsiImplUtil.setName(this, newName);
-  }
-
-  public PsiElement getNameIdentifier() {
-    return QPsiImplUtil.getNameIdentifier(this);
-  }
-
-  public ItemPresentation getPresentation() {
-    return QPsiImplUtil.getPresentation(this);
   }
 
 }
