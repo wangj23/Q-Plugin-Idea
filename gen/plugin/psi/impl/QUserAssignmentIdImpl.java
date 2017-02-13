@@ -7,8 +7,6 @@ import com.intellij.lang.ASTNode;
 import com.intellij.psi.PsiElement;
 import com.intellij.psi.PsiElementVisitor;
 import com.intellij.psi.util.PsiTreeUtil;
-import com.intellij.util.IncorrectOperationException;
-
 import static plugin.psi.QTypes.*;
 import plugin.psi.*;
 
@@ -33,17 +31,4 @@ public class QUserAssignmentIdImpl extends QNamedElementImpl implements QUserAss
     return findNotNullChildByType(USER_ASSIGNMENT);
   }
 
-  @Nullable
-  @Override
-  public PsiElement getNameIdentifier() {
-    return null;
-  }
-
-  @Override
-  public PsiElement setName(
-      @NonNls
-      @NotNull
-          String s) throws IncorrectOperationException {
-    return null;
-  }
 }

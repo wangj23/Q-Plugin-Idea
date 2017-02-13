@@ -47,11 +47,11 @@ public interface QTypes {
   IElementType DASH = new QTokenType("-");
   IElementType DERIVED_VERB = new QTokenType("derived_verb");
   IElementType DO = new QTokenType("do");
+  IElementType DOLLAR = new QTokenType("$");
   IElementType EQUALS = new QTokenType("=");
   IElementType GREATER_THAN = new QTokenType(">");
   IElementType HASH = new QTokenType("#");
   IElementType IF = new QTokenType("if");
-  IElementType IFELSE = new QTokenType("$");
   IElementType LESS_THAN = new QTokenType("<");
   IElementType NEWLINE = new QTokenType("newline");
   IElementType NUMBER = new QTokenType("number");
