@@ -83,7 +83,6 @@
     if="if"
     do="do"
     while="while"
-    ifelse="$"
 
     // punctuation
     newline='regexp:\r|\n|\r\n'
@@ -146,7 +145,7 @@ lambda ::= open_brace [index] E1* close_brace
 private fn_call ::= (control | derived_verb | verb) index+
 index ::= open_bracket E2* close_bracket
 emptyIndex ::= open_bracket close_bracket
-private control ::= (colon | if | do | while | ifelse)
+private control ::= (colon | if | do | while)
 
 dyad ::= (infixNoIndex | infixIndex) [adverb]
 private infixNoIndex ::= n_colon

@@ -80,7 +80,7 @@ public class QUtil {
         if (localAssignments != null) {
           for (QLocalAssignment localAssignment : localAssignments) {
             QUserAssignmentId qUserAssignmentId = localAssignment.getUserAssignmentId();
-            if (name.equals(qUserAssignmentId.getText())) {
+            if (qUserAssignmentId != null && qUserAssignmentId.getText() != null && name.equals(qUserAssignmentId.getText())) {
               if (result == null) {
                 result = new ArrayList<QUserAssignmentId>();
               }

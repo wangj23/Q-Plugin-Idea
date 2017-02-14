@@ -16,9 +16,12 @@ import com.sun.istack.internal.Nullable;
 public class QColorSettingsPage implements ColorSettingsPage {
 
   private static final AttributesDescriptor[] DESCRIPTORS = new AttributesDescriptor[]{
-      new AttributesDescriptor("Comment", QSyntaxHighlighter.COMMENT),
-      new AttributesDescriptor("Identifier", QSyntaxHighlighter.IDENTIFIER_ASSIGNMENT),
-      new AttributesDescriptor("String", QSyntaxHighlighter.STRING)
+      new AttributesDescriptor("Comments", QSyntaxHighlighter.COMMENT),
+      new AttributesDescriptor("Identifiers", QSyntaxHighlighter.IDENTIFIER_ASSIGNMENT),
+      new AttributesDescriptor("String", QSyntaxHighlighter.STRING),
+      new AttributesDescriptor("Symbols", QSyntaxHighlighter.SYMBOL),
+      new AttributesDescriptor("Reserve Words", QSyntaxHighlighter.RESERVE_WORD),
+      new AttributesDescriptor("Parens", QSyntaxHighlighter.PARENS)
   };
 
   @Nullable

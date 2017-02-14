@@ -242,7 +242,7 @@ public class QParser implements PsiParser, LightPsiParser {
   }
 
   /* ********************************************************** */
-  // colon | if | do | while | ifelse
+  // colon | if | do | while
   static boolean control(PsiBuilder b, int l) {
     if (!recursion_guard_(b, l, "control")) return false;
     boolean r;
@@ -251,7 +251,6 @@ public class QParser implements PsiParser, LightPsiParser {
     if (!r) r = consumeToken(b, IF);
     if (!r) r = consumeToken(b, DO);
     if (!r) r = consumeToken(b, WHILE);
-    if (!r) r = consumeToken(b, IFELSE);
     exit_section_(b, m, null, r);
     return r;
   }
