@@ -39,6 +39,7 @@ public class QCompletionContributor extends CompletionContributor {
             resultSet.caseInsensitive();
             List<QUserAssignmentId> qUserAssignmentIds = QUtil.findIdentifier(parameters.getOriginalFile().getProject());
             qUserAssignmentIds.addAll(getLocalVariables(parameters));
+            qUserAssignmentIds.addAll(getCurrentFileSignature(parameters));
             for(QUserAssignmentId qUserAssignmentId : qUserAssignmentIds) {
               addToAutoSuggestion(qUserAssignmentId, resultSet, userInput);
             }
@@ -77,6 +78,25 @@ public class QCompletionContributor extends CompletionContributor {
           result.add(qLocalAssignment.getUserAssignmentId());
         }
       }
+    }
+    return result;
+  }
+
+  private static List<QUserAssignmentId> getCurrentFileSignature(CompletionParameters parameters) {
+    PsiElement psiElement = parameters.getPosition();
+    PsiElement topLevelAssignment = PsiTreeUtil.getTopmostParentOfType(psiElement, QLocalAssignment.class);
+    List<QUserAssignmentId> result = new ArrayList<QUserAssignmentId>();
+    PsiElement pre = topLevelAssignment;
+    PsiElement next = topLevelAssignment;
+    while (next != null) {
+      if (next instanceof QLocalAssignment && ((QLocalAssignment)next).getUserAssignmentId() != null)
+        result.add(((QLocalAssignment)next).getUserAssignmentId());
+      next = next.getNextSibling();
+    }
+    while (pre != null) {
+      if (pre instanceof QUserAssignmentId && ((QLocalAssignment)pre).getUserAssignmentId() != null)
+        result.add(((QLocalAssignment)pre).getUserAssignmentId());
+      pre = pre.getPrevSibling();
     }
     return result;
   }
